@@ -2,9 +2,11 @@
 
 .App {
     font-family: "Montserrat";
+    overflow-x: hidden;
 }
 
 .wrapper {
     padding: 0 40px;
     margin: 0 auto;
+
 }

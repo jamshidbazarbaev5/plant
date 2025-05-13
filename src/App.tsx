@@ -7,11 +7,12 @@ import { Section } from "./components/section/Section"
 // import LoginForm from "./auth/login/Login"
 import { Feedback } from "./components/feedback/Feedback"
 import { Footer } from "./components/footer/Footer"
+import "./styles/style.css"
 
 export const App = () => {
 
   return (
-    <>
+    <div className="App">
       <Navbar />
       <Hero />
       <Main />
@@ -19,7 +20,7 @@ export const App = () => {
       <Section />
       <Feedback />
       <Footer />
-    </>
+    </div>
   )
 }
 
