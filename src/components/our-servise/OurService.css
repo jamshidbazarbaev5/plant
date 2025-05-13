@@ -1,0 +1,15 @@
+.service {
+    width: 100%;
+    padding: 64px 31px;
+}
+
+.service_title {
+    font-weight: 700;
+    font-size: 32px;
+    color: #3C3737;
+}
+
+.service_desc {
+    width: 772px;
+    color: #3C3838;
+}

@@ -1,0 +1,12 @@
+.nav-logo {
+    width: 80px;
+    height: 80px;
+}
+
+.menu a {
+    color: #3C3838;
+}
+
+.menu a :active {
+    color: #477E60;
+}
