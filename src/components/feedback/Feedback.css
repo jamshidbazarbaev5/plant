@@ -1,4 +1,5 @@
 .feedback {
+    padding-bottom: 40px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -9,9 +10,12 @@
 .feedback_message {
     width: 424px;
     height: 300px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    box-shadow: 5px 5px 36px -12px rgba(34, 60, 80, 0.6);
+    border-radius: 10px;
 }
 
 .feedback_title {

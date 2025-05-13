@@ -9,7 +9,7 @@ export const Footer = () => {
             <div className="footer_left">
                 <img className="footer_image" src={Logo} alt="" />
                 <div className="footer_info">
-                    <h2 className="footer_contact">Contacts</h2>
+                    <h2 className="footer_contact">Kontakt</h2>
                     <p className="">Email: reypnazarovanazira@gmail.com</p>
                     <p className="">Tel: +998 97 241 17 07</p>
                 </div>

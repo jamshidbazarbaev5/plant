@@ -1,25 +1,19 @@
-// import { Route, Routes } from "react-router-dom"
-import { Hero } from "./components/hero/Hero"
-import { Main } from "./components/main/Main"
-import { Navbar } from "./components/navbar/Navbar"
-import { OurService } from "./components/our-servise/OurService"
-import { Section } from "./components/section/Section"
-// import LoginForm from "./auth/login/Login"
-import { Feedback } from "./components/feedback/Feedback"
-import { Footer } from "./components/footer/Footer"
+import { Route, Routes } from "react-router-dom"
+import LoginForm from "./auth/login/Login"
 import "./styles/style.css"
+import { Layout } from "./layout/Layout"
+import { Home } from "./pages/Home"
 
 export const App = () => {
 
   return (
     <div className="App">
-      <Navbar />
-      <Hero />
-      <Main />
-      <OurService />
-      <Section />
-      <Feedback />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/login/*" element={<LoginForm />}/>
+        </Route>
+      </Routes>
     </div>
   )
 }

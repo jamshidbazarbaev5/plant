@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css'
+import "../../styles/style.css"
 
 
 const LoginForm: React.FC = () => {
@@ -34,11 +35,8 @@ const LoginForm: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Tizimga muvaffaqiyatli kirish
         console.log('Login successful:', data);
-        // Keyingi sahifaga yo'naltirish yoki holatni yangilash
       } else {
-        // Tizimga kirishda xatolik
         setError(data.message || 'Tizimga kirishda xatolik yuz berdi.');
       }
     } catch (error) {
@@ -50,7 +48,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="wrapper login-container">
       <div className="login-box">
         <h1>Login</h1>
         <p>Enter your credentials to access your account</p>

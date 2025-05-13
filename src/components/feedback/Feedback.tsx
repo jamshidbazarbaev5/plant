@@ -4,7 +4,7 @@ import "./Feedback.css"
 
 export const Feedback = () => {
   return (
-    <Flex className="wrapper">
+    <Flex className="wrapper" direction='column'>
         <Flex className="feedback">
             <Flex className="feedback_message" direction="column">
                 <h2 className="feedback_title">Reipnazarova Nazira</h2>

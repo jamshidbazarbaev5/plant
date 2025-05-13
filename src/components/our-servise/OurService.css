@@ -16,14 +16,23 @@
     text-align: center;
 }
 
+.service_cards {
+    margin-top: 40px;
+    display: flex;
+    gap: 44px;
+}
+
 .service_card {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    
     width: 400px;
     height: 600px;
+}
+
+.service_card:hover {
+    box-shadow: 5px 5px 36px -3px rgba(34, 60, 80, 0.6);
 }
 
 .overlay {

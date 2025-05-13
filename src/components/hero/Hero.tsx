@@ -2,26 +2,44 @@ import { Flex } from "@mantine/core"
 import "./Hero.css"
 import { Link } from "react-router-dom"
 import AI from "../../assets/ai.jpg"
-
+import { motion } from "framer-motion"
 
 export const Hero = () => {
   return (
     <Flex className="hero">
-      <Flex className="hero_inner" justify='space-between'>
-        <Flex className="hero_left" direction="column" gap={20}>
-          <h1 className="hero_title">
-            Assalawma aleykum, Agro AI saytına xosh kelipsiz!
-          </h1>
-          <p className="hero_desc">
-            Bul sayt sizge eginlerińizdiń kesellik túrlerin online anıqlawıńız ushın járdem beredi!
-          </p>
-          <Link to="/login" className="hero_btn">Kesellikti anıqlaw</Link>
+      <motion.div
+        className="hero_inner"
+        initial={{ opacity: 0 }} // Boshlang'ich holat
+        animate={{ opacity: 0.9 }} // Yoxud animatsiya holati
+        transition={{ duration: 1 }} // Animatsiyaning davomiyligi
+      >
+        <Flex justify="space-between">
+          <motion.div
+            className="hero_left"
+            initial={{ opacity: 0, y: 50 }} // Yashirin holat (pastda)
+            animate={{ opacity: 1, y: 0 }} // Aniq holat
+            transition={{ duration: 1 }} // Animatsiya davomiyligi
+          >
+            <h1 className="hero_title">
+              Assalawma aleykum, Agro AI saytına xosh kelipsiz!
+            </h1>
+            <p className="hero_desc">
+              Bul sayt sizge eginlerińizdiń kesellik túrlerin online anıqlawıńız ushın járdem beredi!
+            </p>
+            
+            <Link to="/login" className="hero_btn">Kesellikti anıqlaw</Link>
+          </motion.div>
+
+          <motion.div
+            className="hero_right"
+            initial={{ opacity: 0, x: 80, zIndex: 10 }} // Yashirin holat (o'ngda)
+            animate={{ opacity: 1, x: 0, zIndex: 10 }} // Animatsiyali holat (markazga)
+            transition={{ duration: 1, delay: 0.5 }} // Keyingi animatsiya uchun kechikish
+          >
+            <img style={{zIndex: 10}} src={AI} alt="" className="hero-image" />
+          </motion.div>
         </Flex>
-        <Flex className="hero_right">
-          <img src={AI} alt="" className="hero-image" />
-        </Flex>
-      </Flex>
+      </motion.div>
     </Flex>
   )
 }
-
