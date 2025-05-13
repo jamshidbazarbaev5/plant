@@ -9,14 +9,10 @@ export const Main = () => {
       <Flex justify="space-around" className="main">
         <Flex className="main_left" direction="column" gap={20}>
           <h2 className="main_title">
-              Growing Your Vibrant Vegetables,
-              in your Own Garden
+              Biz haqqımızda
           </h2>
           <p className="main_desc">
-              Growing vegetables in your own garden can be a rewarding and fulfilling
-              experience.Not only does it provide you with fresh and nutritious produce,
-              but it also allows you to connect with nature and enjoy the satisfaction 
-              of watching your plants thrive.
+          Biz - jasalma intellekt texnologiyaları járdeminde ósimlikler haqqında anıq hám paydalı maǵlıwmat usınıs etiwshi innovciyalıq platformamız. Biziń maqsetimiz - tábiyattı súyiwshi hám oǵan ǵamxorlıq etiwshi insanlarǵa ósimliklerdiń keselliklerin anıqlawda hám mashqalalardı tez anıqlawda járdem beriw.
           </p>
         </Flex>
         <Flex className="main_right">

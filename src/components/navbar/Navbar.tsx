@@ -1,7 +1,7 @@
 import { Flex, Image } from "@mantine/core"
 import Logo from "../../assets/logo.svg"
 import User from "../../assets/Profile.svg"
-import Notification from "../../assets/Notification.svg"
+
 import { Link } from "react-router-dom"
 
 
@@ -12,14 +12,13 @@ export const Navbar = () => {
             <Image src={Logo} className="nav-logo"/>
         </Flex>
         <Flex gap={40} className="menu">
-            <Link to="">Home</Link>
-            <Link to="">Product</Link>
-            <Link to="">Services</Link>
-            <Link to="">Blog</Link>
+            <Link to="">Bas bet</Link>
+            <Link to="">Biz haqqımızda</Link>
+            <Link to="">Xızmetler</Link>
+            <Link to="">Kommentariyalar</Link>
         </Flex>
         <Flex gap={19} className="auth">
             <Image src={User} />
-            <Image src={Notification} />
         </Flex>
     </Flex>
   )
