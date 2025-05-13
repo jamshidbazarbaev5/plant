@@ -1,6 +1,7 @@
 .service {
     width: 100%;
     padding: 64px 31px;
+    background-color: #F3FFF1;
 }
 
 .service_title {
@@ -12,4 +13,32 @@
 .service_desc {
     width: 772px;
     color: #3C3838;
+    text-align: center;
+}
+
+.service_card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    width: 400px;
+    height: 600px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.service_card-title {
+    padding: 14px 23.5px;
+    position: absolute;
+    top: 274px;
+    background-color: #FFFFFF;
 }
