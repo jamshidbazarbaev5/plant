@@ -1,0 +1,25 @@
+.feedback {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 44px;
+}
+
+.feedback_message {
+    width: 424px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedback_title {
+    color: #000000;
+    font-weight: 500;
+}
+
+.feedback_text {
+    color: #514C4C;
+}
+

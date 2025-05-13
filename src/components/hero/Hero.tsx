@@ -15,7 +15,7 @@ export const Hero = () => {
           <p className="hero_desc">
             Bul sayt sizge eginlerińizdiń kesellik túrlerin online anıqlawıńız ushın járdem beredi!
           </p>
-          <Link to="#" className="hero_btn">Kesellikti anıqlaw</Link>
+          <Link to="/login" className="hero_btn">Kesellikti anıqlaw</Link>
         </Flex>
         <Flex className="hero_right">
           <img src={AI} alt="" className="hero-image" />
