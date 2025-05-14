@@ -40,11 +40,11 @@
 .hero_btn {
     width: 300px;
     height: 55px;
-    background-color: #FFFFFF;
+    background-color: var(--mantine-color-body);
     border-radius: 12px;
     padding: 13px 25px;
     text-align: center;
-    color: #1B7A43;
+    color: var(--mantine-color-green-7);
     font-size: 20px;
     font-weight: 500;
 }

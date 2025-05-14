@@ -1,7 +1,7 @@
 .service {
     width: 100%;
     padding: 64px 31px;
-    background-color: #F3FFF1;
+    background-color: var(--mantine-color-green-0);
 }
 
 .service_title {
@@ -49,5 +49,5 @@
     padding: 14px 23.5px;
     position: absolute;
     top: 274px;
-    background-color: #FFFFFF;
+    background-color: var(--mantine-color-body);
 }

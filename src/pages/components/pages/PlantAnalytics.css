@@ -1,4 +1,5 @@
 .small-chart-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +9,32 @@
 }
 
 .grid-item {
+    height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* Recharts responsive container fix */
+.recharts-responsive-container {
+    width: 100% !important;
+}
+
+/* Tooltip customization */
+.recharts-tooltip-wrapper {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Legend customization */
+.recharts-legend-item {
+    padding: 4px 8px;
+}
+
+/* Chart grid lines */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+    stroke: #f0f0f0;
 }

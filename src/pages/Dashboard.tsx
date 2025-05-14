@@ -6,19 +6,14 @@ import "./Dashboard.css";
 import PlantAnalytics from "./components/pages/PlantAnalytics";
 
 function Dashboard() {
+
+   
+
     return (
         <div className="app-container">
             <Sidebar />
             <div className="content">
-                <div className="headerApp">
-                    <div className="bottom-actions">
-                        <button className="logout">
-                            <span className="icon">➡️</span>{" "}
-                            {"Logout"}
-                        </button>
-                    </div>
-                </div>
-
+               
                 <Routes>
                     <Route path="/chatbot/" element={<PlantAssistant />} />
                     <Route path="/history" element={<History />} />

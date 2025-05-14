@@ -1,83 +1,75 @@
-.analysis-table-container {
-    width: 100%;
-    overflow-x: auto; /* Agar jadval keng bo'lsa */
+.analysis-details {
+    padding: 16px;
 }
 
-.analysis-table-container table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.analysis-table-container th,
-.analysis-table-container td {
-    padding: 10px 15px;
-    border-bottom: 1px solid #eee;
-    text-align: left;
-}
-
-.analysis-table-container th {
-    background-color: #f9f9f9;
-    font-weight: bold;
-}
-
-.analysis-table-container tbody tr:hover {
-    background-color: #f5f5f5;
-}
-
-.analysis-table-container .plant-icon {
-    display: inline-block;
-    margin-right: 5px;
-}
-
-.analysis-table-container .view-details-button,
-.analysis-table-container .delete-button {
-    padding: 8px 12px;
-    margin-left: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.analysis-table-container .view-details-button {
-    background-color: #007bff;
-    color: white;
-}
-
-.analysis-table-container .delete-button {
-    background-color: #dc3545;
-    color: white;
-}
-
-.analysis-table-container .pagination {
+.analysis-image {
+    margin-bottom: 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--mantine-color-body);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
 }
 
-.analysis-table-container .pagination button {
-    padding: 8px 12px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.analysis-image img {
+    max-width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.analysis-info {
+    padding: 20px;
+    background-color: var(--mantine-color-body);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.analysis-info h3 {
+    margin: 0 0 16px 0;
+    color: #1a1b1e;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.analysis-info p {
+    margin: 8px 0;
+    color: #4a4b4e;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Table styles */
+.mantine-Table-root {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+}
+
+.mantine-Table-tr {
+    transition: background-color 0.2s ease;
     cursor: pointer;
-    background-color: white;
 }
 
-.analysis-table-container .pagination button.active {
-    background-color: #4caf50;
-    color: white;
-    border-color: #4caf50;
+.mantine-Table-tr:hover {
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
-.analysis-table-container .pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+.mantine-Table-td {
+    padding: 12px;
+    vertical-align: middle;
 }
 
-.analysis-table-container .no-data {
-    text-align: center;
-    color: #777;
+/* Modal styles */
+.mantine-Modal-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.mantine-Modal-header {
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 16px;
 }
