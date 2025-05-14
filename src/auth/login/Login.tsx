@@ -1,86 +1,70 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css'
 import "../../styles/style.css"
+import { useMutation } from '@tanstack/react-query';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { login } from '../../service/AuthService';
+
 
 
 const LoginForm: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  
+  const [ username, setUsername ] = useState<string>("")
+  const [ password, setPassword ] = useState<string>("")
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
+  const navigate = useNavigate()
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
+  const { mutate: handleLogin, isSuccess, data } = useMutation({
+    mutationKey: ['auth'],
+    mutationFn: login,
+  })
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setError('');
-    setLoading(true);
+  const { refetch } = useAuth()
 
-    
-    try {
-      const response = await fetch('http://localhost:5000/login', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log('Login successful:', data);
-      } else {
-        setError(data.message || 'Tizimga kirishda xatolik yuz berdi.');
-      }
-    } catch (error) {
-      setError('Server bilan aloqa qilishda xatolik yuz berdi.');
-      console.error('Login error:', error);
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    if(isSuccess && data) {
+      localStorage.setItem("access", data.access)
+      localStorage.setItem("refresh", data.access)
+      navigate("/")
+      refetch()
     }
-  };
+  }, [isSuccess, data, refetch, navigate])
+
+  const handleSubmit = () => {
+    if(username && password) { 
+      handleLogin({ username: username, password: password })
+    }
+  }
 
   return (
-    <div className="wrapper login-container">
-      <div className="login-box">
-        <h1>Login</h1>
-        <p>Enter your credentials to access your account</p>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="your@email.com"
-              required
-            />
+    <div className="login">
+      <div className="login__inner">
+        <h3 className="login__title">Авторизация</h3>
+        <form className="login__container">
+          <div className="login__input-box">
+            <label className="input-box__label">Телефон:</label>
+            <input 
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type="tel" 
+              placeholder="username"/>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
+          <div className="login__input-box">
+            <label className="input-box__label">Пароль:</label>
+            <input 
               value={password}
-              onChange={handlePasswordChange}
-              required
-            />
+              onChange={(e) => setPassword(e.target.value)}
+              type="text" 
+              placeholder="password"/>
           </div>
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="login-button" disabled={loading}>
-            {loading ? 'Loading...' : 'Login'}
-          </button>
         </form>
+        <Link to="" className="login__forgot-pass">Забыл пароль</Link>
+        <button className="login__btn" onClick={handleSubmit}>Авторизация</button>
+        <label>Еще нет аккаунта? <Link to="/register">Регистация</Link></label>
       </div>
-    </div>
+      
+    </div>   
   );
 };
 

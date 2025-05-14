@@ -1,0 +1,68 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 90vh;
+}
+
+.headerApp {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+}
+
+.themeColor {
+    border-radius: 8%;
+    margin: 1%;
+    margin-top: 8px;
+    padding: 4px;
+}
+
+.language-selector {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    margin: 4px;
+}
+
+.language-selector select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.bottom-actions button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 2%;
+    margin-bottom: 10%;
+}
+
+.bottom-actions button .icon {
+    margin-right: 10px;
+}
+
+.bottom-actions .logout {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.bottom-actions .language {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+}
+

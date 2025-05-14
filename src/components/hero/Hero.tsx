@@ -3,8 +3,11 @@ import "./Hero.css"
 import { Link } from "react-router-dom"
 import AI from "../../assets/ai.jpg"
 import { motion } from "framer-motion"
+import { useAuth } from "../../hooks/useAuth"
 
 export const Hero = () => {
+  const { isAuth } = useAuth()
+  
   return (
     <Flex className="hero">
       <motion.div
@@ -27,7 +30,7 @@ export const Hero = () => {
               Bul sayt sizge eginlerińizdiń kesellik túrlerin online anıqlawıńız ushın járdem beredi!
             </p>
             
-            <Link to="/login" className="hero_btn">Kesellikti anıqlaw</Link>
+            <Link to={isAuth ? "/asistant" : "/login"} className="hero_btn">Kesellikti anıqlaw</Link>
           </motion.div>
 
           <motion.div

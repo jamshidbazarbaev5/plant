@@ -1,0 +1,44 @@
+.nutrient-levels-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nutrient-levels-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.radar-chart {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.nutrient-levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.nutrient-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    text-align: center;
+}
+
+.nutrient-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #3f83f8;
+    margin-bottom: 5px;
+}
+
+.nutrient-label {
+    color: #777;
+    font-size: 0.9em;
+}

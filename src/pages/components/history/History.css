@@ -1,0 +1,12 @@
+.history-container {
+    padding: 20px;
+}
+
+.history-container h1 {
+    margin-bottom: 10px;
+}
+
+.history-container p {
+    color: #777;
+    margin-bottom: 20px;
+}

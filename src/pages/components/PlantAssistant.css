@@ -1,0 +1,20 @@
+.plant-assistant {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+.plant-assistant {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    display: flex;
+    height: calc(100vh - 60px);
+}

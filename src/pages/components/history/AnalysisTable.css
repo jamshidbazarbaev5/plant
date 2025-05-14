@@ -1,0 +1,83 @@
+.analysis-table-container {
+    width: 100%;
+    overflow-x: auto; /* Agar jadval keng bo'lsa */
+}
+
+.analysis-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.analysis-table-container th,
+.analysis-table-container td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.analysis-table-container th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.analysis-table-container tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.analysis-table-container .plant-icon {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.analysis-table-container .view-details-button,
+.analysis-table-container .delete-button {
+    padding: 8px 12px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.analysis-table-container .view-details-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.analysis-table-container .delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.analysis-table-container .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.analysis-table-container .pagination button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.analysis-table-container .pagination button.active {
+    background-color: #4caf50;
+    color: white;
+    border-color: #4caf50;
+}
+
+.analysis-table-container .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.analysis-table-container .no-data {
+    text-align: center;
+    color: #777;
+}

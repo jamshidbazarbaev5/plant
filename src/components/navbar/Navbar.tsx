@@ -3,11 +3,19 @@ import Logo from "../../assets/logo.svg"
 import User from "../../assets/Profile.svg"
 import { HashLink } from "react-router-hash-link" 
 import "./Navbar.css"
+import { useEffect } from "react"
+import { useAuth } from "../../hooks/useAuth"
 
 
 export const Navbar = () => {
-
   
+  const { isAuth, refetch } = useAuth()
+
+  useEffect(() => {
+    if(!isAuth) {
+      refetch()
+    }
+  }, [isAuth, refetch])
 
   return (
     <Flex className="wrapper" align="center" justify="space-between" h={80}>
@@ -20,7 +28,7 @@ export const Navbar = () => {
           <HashLink smooth to="/#service">Xızmetler</HashLink>
           <HashLink smooth to="/#feedback">Kommentariyalar</HashLink>
         </Flex>
-        <Flex gap={19} className="auth">
+        <Flex gap={19} className="auth" >
             <Image src={User} />
         </Flex>
     </Flex>
