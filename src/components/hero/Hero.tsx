@@ -30,7 +30,7 @@ export const Hero = () => {
               Bul sayt sizge eginlerińizdiń kesellik túrlerin online anıqlawıńız ushın járdem beredi!
             </p>
             
-            <Link to={isAuth ? "/asistant" : "/login"} className="hero_btn">Kesellikti anıqlaw</Link>
+            <Link to={isAuth ? "/dashboard" : "/login"} className="hero_btn">Kesellikti anıqlaw</Link>
           </motion.div>
 
           <motion.div

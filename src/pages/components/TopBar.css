@@ -1,0 +1,18 @@
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--mantine-color-body);
+    border-bottom: 1px solid var(--mantine-color-gray-3);
+}
+
+.top-bar-items {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.top-bar .language-selector {
+    min-width: 180px;
+}

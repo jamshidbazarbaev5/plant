@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Title, Grid, Paper, Text } from "@mantine/core";
+import { useTranslation } from 'react-i18next';
 import {
     AreaChart,
     Area,
@@ -42,7 +43,10 @@ interface DashboardData {
 }
 
 const PlantAnalytics: React.FC = () => {
-    const [data, setData] = useState<DashboardData | null>(null);    useEffect(() => {
+    const [data, setData] = useState<DashboardData | null>(null);
+    const { t } = useTranslation();
+    
+    useEffect(() => {
         const token = localStorage.getItem("access");
         fetch("https://agroai.social/api/plants/dashboard/", {
             headers: {
@@ -66,26 +70,24 @@ const PlantAnalytics: React.FC = () => {
     };
 
     return (
-        <Container size="xl">
-            <Title style={{ textAlign: 'center', marginBottom: '1rem' }}>
-                O'simlik Analitikasi
+        <Container size="xl">            <Title style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                {t('Plant Analytics')}
             </Title>
             <Grid gutter="md">
                 {/* Summary Cards */}
                 <Grid.Col span={4}>
                     <Paper shadow="xs" p="md" className="grid-item">
                         <Text ta="center" fz="xl" fw={500} mb="sm">
-                            Jami Yuklangan
+                            {t('Total Uploads')}
                         </Text>
                         <Text ta="center" fz={24} c="blue">
                             {data.summary.total_uploads}
                         </Text>
                     </Paper>
-                </Grid.Col>
-                <Grid.Col span={4}>
+                </Grid.Col>                <Grid.Col span={4}>
                     <Paper shadow="xs" p="md" className="grid-item">
                         <Text ta="center" fz="xl" fw={500} mb="sm">
-                            Sog'lom O'simliklar
+                            {t('Healthy Plants')}
                         </Text>
                         <Text ta="center" fz={24} c="green">
                             {data.summary.healthy_plants}
@@ -95,8 +97,7 @@ const PlantAnalytics: React.FC = () => {
                 <Grid.Col span={4}>
                     <Paper shadow="xs" p="md" className="grid-item">
                         <Text ta="center" fz="xl" fw={500} mb="sm">
-                            Kasallangan O'simliklar
-                        </Text>
+                            {t('Diseased Plants')}</Text>
                         <Text ta="center" fz={24} c="red">
                             {data.summary.diseased_plants}
                         </Text>
@@ -136,9 +137,8 @@ const PlantAnalytics: React.FC = () => {
 
                 {/* Plant Distribution */}
                 <Grid.Col span={6}>
-                    <Paper shadow="xs" p="md" className="grid-item">
-                        <Text ta="center" fz="xl" fw={500} mb="md">
-                            O'simliklar Taqsimoti
+                    <Paper shadow="xs" p="md" className="grid-item">                        <Text ta="center" fz="xl" fw={500} mb="md">
+                            {t('Plant Distribution')}
                         </Text>
                         <div style={{ width: '100%', height: 300 }}>
                             <ResponsiveContainer>
@@ -148,8 +148,8 @@ const PlantAnalytics: React.FC = () => {
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
-                                    <Bar dataKey="healthy" fill="#00C49F" name="Sog'lom" />
-                                    <Bar dataKey="diseased" fill="#FF8042" name="Kasallangan" />
+                                    <Bar dataKey="healthy" fill="#00C49F" name={t('Healthy')} />
+                                    <Bar dataKey="diseased" fill="#FF8042" name={t('Diseased')} />
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
@@ -158,9 +158,8 @@ const PlantAnalytics: React.FC = () => {
 
                 {/* Hourly Uploads */}
                 <Grid.Col span={12}>
-                    <Paper shadow="xs" p="md" className="grid-item">
-                        <Text ta="center" fz="xl" fw={500} mb="md">
-                            Soatlik Yuklashlar
+                    <Paper shadow="xs" p="md" className="grid-item">                        <Text ta="center" fz="xl" fw={500} mb="md">
+                            {t('Hourly Uploads')}
                         </Text>
                         <div style={{ width: '100%', height: 300 }}>
                             <ResponsiveContainer>
@@ -181,7 +180,7 @@ const PlantAnalytics: React.FC = () => {
                                         stackId="1"
                                         stroke="#00C49F"
                                         fill="#00C49F"
-                                        name="Sog'lom"
+                                        name={t('Healthy')}
                                     />
                                     <Area
                                         type="monotone"
@@ -189,7 +188,7 @@ const PlantAnalytics: React.FC = () => {
                                         stackId="1"
                                         stroke="#FF8042"
                                         fill="#FF8042"
-                                        name="Kasallangan"
+                                        name={t('Diseased')}
                                     />
                                 </AreaChart>
                             </ResponsiveContainer>

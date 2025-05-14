@@ -16,6 +16,14 @@
     align-items: center;
 }
 
+.grid-item img {
+    transition: filter 0.2s ease;
+}
+
+[data-mantine-color-scheme="light"] .grid-item img {
+    filter: brightness(0.95) contrast(1.1);
+}
+
 /* Recharts responsive container fix */
 .recharts-responsive-container {
     width: 100% !important;

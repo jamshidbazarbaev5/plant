@@ -2,6 +2,7 @@ import { Image, ScrollArea, Table, Modal, Paper } from "@mantine/core";
 import { useState, useEffect } from "react";
 import './AnalysisTable.css'
 import { getHistory } from "../../../service/PlantsService";
+import { useTranslation } from 'react-i18next';
 
 interface Message {
     sender: "bot" | "user";
@@ -15,6 +16,7 @@ interface Message {
 }
 
 function AnalysisTable() {
+    const { t } = useTranslation();
     const [messages, setMessages] = useState<Message[]>([]);
     const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +30,7 @@ function AnalysisTable() {
                         sender: "bot" as const,
                         type: "image",
                         url: item.image,
-                        text: `${item.plant_name} (${item.plant_label})${item.is_healthy ? ' - Sog\'lom' : ' - Kasal'}`,
+                        text: `${item.plant_name} (${item.plant_label})${item.is_healthy ? ` - ${t('Healthy')}` : ` - ${t('Diseased')}`}`,
                         time: new Date(item.created_at).toLocaleTimeString(),
                         plantName: item.plant_name,
                         plantLabel: item.plant_label,
@@ -47,13 +49,12 @@ function AnalysisTable() {
     return (
         <Paper shadow="sm" radius="md" p="md">
             <ScrollArea h={500}>
-                <Table striped highlightOnHover>
-                    <Table.Thead>
+                <Table striped highlightOnHover>                    <Table.Thead>
                         <Table.Tr>
-                            <Table.Th>Rasm</Table.Th>
-                            <Table.Th>O'simlik nomi</Table.Th>
-                            <Table.Th>Holati</Table.Th>
-                            <Table.Th>Vaqt</Table.Th>
+                            <Table.Th>{t('Image')}</Table.Th>
+                            <Table.Th>{t('Plant Name')}</Table.Th>
+                            <Table.Th>{t('Status')}</Table.Th>
+                            <Table.Th>{t('Time')}</Table.Th>
                         </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>
@@ -89,9 +90,8 @@ function AnalysisTable() {
                     onClose={() => {
                         setIsModalOpen(false);
                         setSelectedMessage(null);
-                    }}
-                    size="md"
-                    title="O'simlik ma'lumotlari"
+                    }}                    size="md"
+                    title={t('Plant Details')}
                     centered
                     styles={{
                         inner: { 
@@ -121,14 +121,13 @@ function AnalysisTable() {
                                     fit="contain"
                                 />
                             </Paper>
-                            <Paper shadow="sm" p="lg" className="analysis-info">
-                                <h3>{selectedMessage.plantName}</h3>
-                                <p>Turi: {selectedMessage.plantLabel}</p>
-                                <p>Holati: {selectedMessage.isHealthy ? 
-                                    <span style={{ color: '#40c057' }}>Sog'lom</span> : 
-                                    <span style={{ color: '#fa5252' }}>Kasal</span>
+                            <Paper shadow="sm" p="lg" className="analysis-info">                                <h3>{selectedMessage.plantName}</h3>
+                                <p>{t('Type')}: {selectedMessage.plantLabel}</p>
+                                <p>{t('Status')}: {selectedMessage.isHealthy ? 
+                                    <span style={{ color: '#40c057' }}>{t('Healthy')}</span> : 
+                                    <span style={{ color: '#fa5252' }}>{t('Diseased')}</span>
                                 }</p>
-                                <p>Vaqt: {selectedMessage.time}</p>
+                                <p>{t('Time')}: {selectedMessage.time}</p>
                             </Paper>
                         </div>
                     )}</Modal>

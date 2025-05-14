@@ -2,6 +2,7 @@ import { Image, ScrollArea } from "@mantine/core";
 import React, { useState, useEffect, useRef } from "react";
 import "./ChatArea.css";
 import { getHistory, ClassifyPlant } from "../../../service/PlantsService";
+import { useTranslation } from 'react-i18next';
 
 interface Message {
     sender: "bot" | "user";
@@ -12,6 +13,7 @@ interface Message {
 }
 
 function ChatArea() {
+    const { t } = useTranslation();
     const [messages, setMessages] = useState<Message[]>([]);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -63,7 +65,7 @@ function ChatArea() {
         if (file) {
             // Check file type
             if (!file.type.startsWith('image/')) {
-                alert("Iltimos, faqat rasm fayllarini yuklang");
+                alert(t('Please upload image files only'));
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
@@ -73,7 +75,7 @@ function ChatArea() {
             // Check file size (max 5MB)
             const maxSize = 5 * 1024 * 1024; // 5MB in bytes
             if (file.size > maxSize) {
-                alert("Rasm hajmi juda katta. Iltimos, 5MB dan kichik rasm tanlang");
+                alert(t('Image size is too large. Please select an image smaller than 5MB'));
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
@@ -123,28 +125,25 @@ function ChatArea() {
 
                 const formData = new FormData();
                 formData.append("image", selectedImage, selectedImage.name);
-                formData.append("mode", "classify");
-
-                const response = await ClassifyPlant(formData);
+                formData.append("mode", "classify");                const response = await ClassifyPlant(formData);
                 if (response) {
                     const botResponse: Message = {
                         sender: "bot",
                         type: "text",
-                        text: `${response.plant_name} (${response.plant_label})${response.is_healthy ? ' - Sog\'lom' : ' - Kasal'}`,
+                        text: `${response.plant_name} (${response.plant_label})${response.is_healthy ? ` - ${t('Healthy')}` : ` - ${t('Diseased')}`}`,
                         time: getCurrentTime(),
                     };
                     setMessages((prevMessages) => [...prevMessages, botResponse]);
                 } else {
-                    throw new Error("Klassifikatsiya natijasi topilmadi");
+                    throw new Error(t('No results found'));
                 }
             } catch (error: any) {
                 console.error("O'simlikni klassifikatsiya qilishda xatolik:", error.message);
                 const errorResponse: Message = {
                     sender: "bot",
                     type: "text",
-                    text: error.message.includes("413") 
-                        ? "Rasm hajmi juda katta. Iltimos, kichikroq rasm yuklang."
-                        : "Kechirasiz, rasmni qayta ishlashda xatolik yuz berdi. Iltimos, boshqa rasm bilan urinib ko'ring.",
+                    text: error.message.includes("413")                        ? t('Image size is too large. Please upload a smaller image.')
+                        : t('Sorry, there was an error processing the image. Please try again with a different image.'),
                     time: getCurrentTime(),
                 };
                 setMessages((prevMessages) => [...prevMessages, errorResponse]);
@@ -190,9 +189,8 @@ function ChatArea() {
                 </div>
             </ScrollArea>
             <div className="input-area">
-                <div className="file-input-container">
-                    <label className="file-input-label" htmlFor="image-upload">
-                        {selectedImage ? '🖼️ Rasm tanlandi' : '📁 Rasm tanlang'}
+                <div className="file-input-container">                    <label className="file-input-label" htmlFor="image-upload">
+                        {selectedImage ? `🖼️ ${t('Image Selected')}` : `📁 ${t('Choose Image')}`}
                     </label>
                     <input
                         id="image-upload"
@@ -208,9 +206,8 @@ function ChatArea() {
                 <button 
                     className="send-button" 
                     onClick={handleSendImage} 
-                    disabled={!selectedImage}
-                >
-                    Yuborish
+                    disabled={!selectedImage}                >
+                    {t('Send')}
                 </button>
             </div>
         </div>

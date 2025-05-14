@@ -40,10 +40,10 @@ const LoginForm: React.FC = () => {
   return (
     <div className="login">
       <div className="login__inner">
-        <h3 className="login__title">Авторизация</h3>
+        <h3 className="login__title">Avtorizatsiya</h3>
         <form className="login__container">
           <div className="login__input-box">
-            <label className="input-box__label">Телефон:</label>
+            <label className="input-box__label">Telefon:</label>
             <input 
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -51,7 +51,7 @@ const LoginForm: React.FC = () => {
               placeholder="username"/>
           </div>
           <div className="login__input-box">
-            <label className="input-box__label">Пароль:</label>
+            <label className="input-box__label">Parol:</label>
             <input 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -59,9 +59,9 @@ const LoginForm: React.FC = () => {
               placeholder="password"/>
           </div>
         </form>
-        <Link to="" className="login__forgot-pass">Забыл пароль</Link>
-        <button className="login__btn" onClick={handleSubmit}>Авторизация</button>
-        <label>Еще нет аккаунта? <Link to="/register">Регистация</Link></label>
+        <Link to="" className="login__forgot-pass">Paroldi umittin'izba?</Link>
+        <button className="login__btn" onClick={handleSubmit}>Avtorizatsiya</button>
+        <label>Akkauntıńız joqpa? <Link to="/register">Dizimnen ótiw</Link></label>
       </div>
       
     </div>   
