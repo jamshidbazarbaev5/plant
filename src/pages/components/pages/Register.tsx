@@ -1,28 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { postUserRegistration } from "../storeServer/register.ts";
-import {
-    Anchor,
-    Button,
-    Checkbox,
-    Container,
-    Group,
-    Paper,
-    PasswordInput,
-    Text,
-    TextInput,
-    Title,
-    Autocomplete,
-    Notification,
-} from "@mantine/core";
-import { DateInput } from "@mantine/dates";
+import { useAppDispatch } from "../../../service/store";
+import { Container, TextInput, Button, Text, Paper, PasswordInput, Title, Notification } from "@mantine/core";
+import { Link } from "react-router-dom";
+import { postUserRegistration } from "../../../storeServer/register";
+import "./Register.css";
 import { useState } from "react";
-import dayjs from "dayjs";
-import { useNavigate, useParams, Link } from "react-router-dom";
 
 function AuthenticationTitle() {
-    const { auth } = useParams();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -42,9 +26,7 @@ function AuthenticationTitle() {
         setError("");
 
         try {
-            const result = await dispatch(
-                postUserRegistration(formData)
-            ).unwrap();
+            await dispatch(postUserRegistration(formData)).unwrap();
             setSuccess(true);
         } catch (err: any) {
             const errorMessage = err?.message || "Something went wrong.";
@@ -58,7 +40,7 @@ function AuthenticationTitle() {
             <Title ta="center">Welcome!</Title>
             <Text c="dimmed" size="sm" ta="center" mt={5}>
                 Do you have an account?{" "}
-                <Link to="/login" size="sm">
+                <Link to="/login" style={{ fontSize: '14px' }}>
                     Log in
                 </Link>
             </Text>

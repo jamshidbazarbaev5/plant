@@ -18,11 +18,11 @@ const Nutrient: React.FC<NutrientLevelsProps> = ({
     const center = 60;
     const radius = 50;
 
-    const getPoint = (angle: number, value: number) => {
+    const getPoint = (angle: number, value: number): { x: number; y: number } => {
         const radAngle = ((angle - 90) * Math.PI) / 180;
         const x = center + radius * (value / 100) * Math.cos(radAngle);
         const y = center + radius * (value / 100) * Math.sin(radAngle);
-        return `${x},${y}`;
+        return { x, y };
     };
 
     const nitrogenPoint = getPoint(0, nitrogenLevel);
@@ -31,7 +31,7 @@ const Nutrient: React.FC<NutrientLevelsProps> = ({
     const calciumPoint = getPoint(216, calciumLevel);
     const fifthPoint = getPoint(288, nitrogenLevel); // Poligonni yopish uchun
 
-    const polygonPoints = `${nitrogenPoint} ${phosphorusPoint} ${potassiumPoint} ${calciumPoint} ${fifthPoint}`;
+    const polygonPoints = `${nitrogenPoint.x},${nitrogenPoint.y} ${phosphorusPoint.x},${phosphorusPoint.y} ${potassiumPoint.x},${potassiumPoint.y} ${calciumPoint.x},${calciumPoint.y} ${fifthPoint.x},${fifthPoint.y}`;
 
     return (
         <div className="nutrient-levels-container">
@@ -67,14 +67,14 @@ const Nutrient: React.FC<NutrientLevelsProps> = ({
                     <line
                         x1={center}
                         y1={center}
-                        x2={getPoint(72, 100).split(",")[0]}
-                        y2={getPoint(72, 100).split(",")[1]}
+                        x2={getPoint(72, 100).x}
+                        y2={getPoint(72, 100).y}
                         stroke="#ccc"
                         strokeWidth="1"
                     />
                     <text
-                        x={getPoint(72, 100).split(",")[0]}
-                        y={getPoint(72, 100).split(",")[1] + 5}
+                        x={getPoint(72, 100).x}
+                        y={getPoint(72, 100).y + 5}
                         fontSize="8"
                         textAnchor="middle"
                     >
@@ -84,14 +84,14 @@ const Nutrient: React.FC<NutrientLevelsProps> = ({
                     <line
                         x1={center}
                         y1={center}
-                        x2={getPoint(144, 100).split(",")[0]}
-                        y2={getPoint(144, 100).split(",")[1]}
+                        x2={getPoint(144, 100).x}
+                        y2={getPoint(144, 100).y}
                         stroke="#ccc"
                         strokeWidth="1"
                     />
                     <text
-                        x={getPoint(144, 100).split(",")[0] - 5}
-                        y={getPoint(144, 100).split(",")[1] + 5}
+                        x={getPoint(144, 100).x - 5}
+                        y={getPoint(144, 100).y + 5}
                         fontSize="8"
                         textAnchor="end"
                     >
@@ -101,14 +101,14 @@ const Nutrient: React.FC<NutrientLevelsProps> = ({
                     <line
                         x1={center}
                         y1={center}
-                        x2={getPoint(216, 100).split(",")[0]}
-                        y2={getPoint(216, 100).split(",")[1]}
+                        x2={getPoint(216, 100).x}
+                        y2={getPoint(216, 100).y}
                         stroke="#ccc"
                         strokeWidth="1"
                     />
                     <text
-                        x={getPoint(216, 100).split(",")[0] - 5}
-                        y={getPoint(216, 100).split(",")[1] - 3}
+                        x={getPoint(216, 100).x - 5}
+                        y={getPoint(216, 100).y - 3}
                         fontSize="8"
                         textAnchor="end"
                     >

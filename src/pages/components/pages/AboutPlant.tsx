@@ -1,5 +1,4 @@
 import { Spoiler } from "@mantine/core";
-import React from "react";
 
 export default function AboutPlant() {
     return (

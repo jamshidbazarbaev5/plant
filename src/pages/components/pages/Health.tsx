@@ -1,6 +1,10 @@
-import React from "react";
+import { useState } from "react";
 
 export default function Health() {
+    const healthScore = useState(85)[0];
+    const estimatedAgeDays = useState(30)[0];
+    const confidencePercentage = useState(92)[0];
+
     return (
         <div className="health-metrics-container">
             <div className="health-metrics">
@@ -40,9 +44,7 @@ export default function Health() {
                         }}
                     >
                         <div className="inner-circle">{healthScore}%</div>
-                    </div>
-                    <div className="health-label">85%</div>{" "}
-                    {/* Bu statik, dinamik qiling */}
+                    </div>                    <div className="health-label">{healthScore}%</div>
                 </div>
             </div>
         </div>

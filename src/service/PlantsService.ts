@@ -12,29 +12,34 @@ interface ClassifyPlantRes {
     created_at: string;
 }
 
-
-
-export const ClassifyPlant = async (formData: FormData) => {
+export const ClassifyPlant = async (input: FormData | ClassifyPlantReq) => {
     const token = localStorage.getItem("access");
     if (token) {
         try {
-            const response = await axios.post<ClassifyPlantRes>(`${baseURL}/api/users`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data', // FormData uchun header
-                    'Authorization': `Bearer ${token}`, // Agar token kerak bo'lsa
-                },
-            });
+            const headers: any = {
+                'Authorization': `Bearer ${token}`,
+            };
+            
+            // If input is FormData, set appropriate content type
+            if (input instanceof FormData) {
+                headers['Content-Type'] = 'multipart/form-data';
+            }
+            
+            const response = await axios.post<ClassifyPlantRes>(
+                `${baseURL}/api/plants/predict/`,
+                input,
+                { headers }
+            );
             return response.data;
         } catch (error) {
-            console.error("O'simlikni klassifikatsiya qilishda xatolik:", error);
-            throw error; // Xatolikni keyingi zanjirga uzatish
+            console.error("Error classifying plant:", error);
+            throw error;
         }
     } else {
-        console.warn("Token topilmadi!");
+        console.warn("Token not found!");
         return null;
     }
 };
-
 
 interface GetHistory {
     count: number;
@@ -88,24 +93,18 @@ interface ClassifyPlantReq {
     ]
 }
 
-// export const ClassifyPlant = async (credentials: ClassifyPlantReq) => {
-//     const token = localStorage.getItem("access")
-//     if(token) {
-//         try {
-//             const response = await axios.post<ClassifyPlantRes>(`${baseURL}/api/users`, credentials)
-//             return response.data
-//         }
-//         catch(error) {
-//             console.error(error);
-//         }
-//     }
-// }
-
 export const getHistory = async () => {
     const token = localStorage.getItem("access")
     if(token) {
         try {
-            const response = await axios.get<GetHistory>(`${baseURL}/api/users`)
+            const response = await axios.get<GetHistory>(
+                `${baseURL}/api/plants/history/`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            )
             return response.data
         }
         catch(error) {
@@ -118,7 +117,14 @@ export const getDashboard = async () => {
     const token = localStorage.getItem("access")
     if(token) {
         try {
-            const response = await axios.get<PlantReport>(`${baseURL}/api/users`)
+            const response = await axios.get<PlantReport>(
+                `${baseURL}/api/users`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            )
             return response.data
         }
         catch(error) {

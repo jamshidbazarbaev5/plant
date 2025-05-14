@@ -43,7 +43,7 @@ const PlantAnalytics: React.FC = () => {
 
         return (
             <div className="small-chart-container">
-                <Text size="sm" weight={500} mb="xs">
+                <Text style={{ fontWeight: 500 }} size="sm" mb="xs">
                     O'sish
                 </Text>
                 <svg width={chartWidth} height={chartHeight}>
@@ -94,7 +94,7 @@ const PlantAnalytics: React.FC = () => {
 
         return (
             <div className="small-chart-container">
-                <Text size="sm" weight={500} mb="xs">
+                <Text style={{ fontWeight: 500 }} size="sm" mb="xs">
                     Sog'lomlik
                 </Text>
                 <svg width={size} height={size}>
@@ -167,7 +167,7 @@ const PlantAnalytics: React.FC = () => {
 
         return (
             <div className="small-chart-container">
-                <Text size="sm" weight={500} mb="xs">
+                <Text style={{ fontWeight: 500 }} size="sm" mb="xs">
                     Oziq Moddalar
                 </Text>
                 <svg width={size} height={size}>
@@ -185,7 +185,7 @@ const PlantAnalytics: React.FC = () => {
 
     return (
         <Container>
-            <Title align="center" my="md">
+            <Title style={{ textAlign: 'center' }} my="md">
                 O'simlik Analitikasi
             </Title>
             <Grid gutter="md">

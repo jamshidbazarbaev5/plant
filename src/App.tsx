@@ -11,6 +11,8 @@ import { PrivateRoute } from "./pages/PrivateRoute";
 import Dashboard  from "./pages/Dashboard.tsx";
 import History from "./pages/components/history/History"
 import PlantAssistant from "./pages/components/PlantAssistant"
+import PlantAnalytics from "./pages/components/pages/PlantAnalytics.tsx";
+import Register from "./pages/components/pages/Register.tsx";
 
 export const App = () => {
 
@@ -42,7 +44,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div style={{ position: "absolute", top: 10, right: 10, zIndex: 100 }}>
+      <div style={{ position: "absolute", top: 24, right: 92, zIndex: 100 }}>
         <ColorSchemeSwitcher />
       </div>
 
@@ -50,10 +52,12 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<Register />} />
           <Route element={<PrivateRoute />}>
             <Route path="/asistant/*" element={<Dashboard />} />
             <Route path="/history" element={<History />} />
             <Route path="/chatbot" element={<PlantAssistant />} />
+             <Route path="/analisis" element={<PlantAnalytics />} />
 
           </Route>
         </Route>
